@@ -1,6 +1,6 @@
 import express from "express"
 import multer from "multer"
-import { signup } from "../controller/USerController.js";
+import { login, logout, signup } from "../controller/USerController.js";
 
 const userRoute = express.Router();
 const storage = multer.diskStorage({
@@ -13,6 +13,6 @@ const storage = multer.diskStorage({
 const upload = multer({storage: storage});
 
 userRoute.post("/signup",upload.single("image"),signup)
-
-
+userRoute.post("/login",login)
+userRoute.post("/logout",logout)
 export default userRoute 
